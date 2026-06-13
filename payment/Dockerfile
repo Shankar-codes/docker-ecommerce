@@ -3,7 +3,7 @@ WORKDIR /opt/server
 COPY payment.ini .
 COPY requirements.txt .
 COPY *.py .
-RUN pip install -r requirements.tx
+RUN pip install -r requirements.txt
 ENV CART_HOST="cart" \
     CART_PORT="8080" \
     USER_HOST="user" \
