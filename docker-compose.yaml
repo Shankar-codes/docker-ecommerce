@@ -1,56 +1,68 @@
 services:
   mongodb:
-    image: mongodb:v1
+    build: ./mongodb
+    image: shankarntr/mongodb:v1
     container_name: mongodb
     volumes:
       - mongodb:/data/db
   catalogue:
-    image: catalogue:v1
+    build: 
+      context: ./catalogue
+      dockerfile: Dockerfile
+    image: shankarntr/catalogue:v1
     container_name: catalogue
     depends_on: 
     - mongodb
   redis:
-    image: redis:v1
+    build: ./redis
+    image: shankarntr/redis:v1
     container_name: redis
     volumes:
       - redis:/data
   mysql:
-    image: mysql:v1
+    build: ./mysql
+    image: shankarntr/mysql:v1
     container_name: mysql
     volumes:
       - mysql:/var/lib/mysql
   rabbitmq:
-    image: rabbitmq:v1
+    build: ./rabbitmq
+    image: shankarntr/rabbitmq:v1
     container_name: rabbitmq
     volumes:
       - rabbitmq:/var/lib/rabbitmq
   user:
-    image: user:v1
+    build: ./user
+    image: shankarntr/user:v1
     container_name: user
     depends_on:
     - redis
     - mongodb
   cart:
-    image: cart:v1
+    build: ./cart
+    image: shankarntr/cart:v1
     container_name: cart
     depends_on:
     - redis
     - catalogue
   shipping:
-    image: shipping:v1
+    build: ./shipping
+    image: shankarntr/shipping:v1
     container_name: shipping
     depends_on:
     - cart
     - mysql
   payment:
-    image: payment:v1
+    build: ./payment
+    image: shankarntr/payment:v1
     container_name: payment
     depends_on:
     - cart
     - user
     - rabbitmq
   frontend:
-    image: frontend:v1
+    build: ./frontend
+    image: shankarntr/frontend:v1
     container_name: frontend
     ports:
     - "80:80"
