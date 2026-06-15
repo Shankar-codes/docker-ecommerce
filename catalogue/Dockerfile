@@ -10,7 +10,10 @@ WORKDIR /opt/server
 COPY --from=build /opt/server /opt/server/
 ENV MONGO="true" \
     MONGO_URL="mongodb://mongodb:27017/catalogue"
-CMD ["node", "server.js"]
+RUN chown -R roboshop:roboshop /opt/server
+USER roboshop
+CMD ["server.js"]
+ENTRYPOINT ["node"]
 
 
 # FROM node:20
