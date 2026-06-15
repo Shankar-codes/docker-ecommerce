@@ -1,0 +1,10 @@
+services:
+  mongodb:
+    image: mongodv:v1
+
+
+networks:
+  default:
+    driver: bridge
+    name: ellamma
+    external: false 
