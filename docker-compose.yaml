@@ -52,9 +52,15 @@ services:
     - cart
     - shipping
     - payment
-    
+
 networks:
   default:
     driver: bridge
     name: ellamma
     external: false 
+
+volumes:
+  mongodb:
+  redis:
+  mysql:
+  rabbitmq:
