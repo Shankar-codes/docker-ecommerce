@@ -22,6 +22,8 @@ services:
   rabbitmq:
     image: rabbitmq:v1
     container_name: rabbitmq
+    volumes:
+      - rabbitmq:/var/lib/rabbitmq
   user:
     image: user:v1
     container_name: user
