@@ -2,6 +2,8 @@ services:
   mongodb:
     image: mongodb:v1
     container_name: mongodb
+    volumes:
+      - mongodb:/data/db
   catalogue:
     image: catalogue:v1
     container_name: catalogue
