@@ -1,8 +1,7 @@
 services:
   mongodb:
-    image: mongodv:v1
-
-
+    image: mongodb:v1
+    contaniner_name: mongodb
 networks:
   default:
     driver: bridge
