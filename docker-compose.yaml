@@ -5,7 +5,8 @@ services:
   catalogue:
     image: catalogue:v1
     container_name: catalogue
-    depends_on: mongodb
+    depends_on: 
+    - mongodb
   
 networks:
   default:
