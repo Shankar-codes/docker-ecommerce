@@ -22,6 +22,37 @@ services:
     depends_on:
     - redis
     - mongodb
+  cart:
+    image: cart:v1
+    container_name: cart
+    depends_on:
+    - redis
+    - catalogue
+  shipping:
+    image: shipping:v1
+    container_name: shipping
+    depends_on:
+    - cart
+    - mysql
+  payment:
+    image: payment:v1
+    container_name: payment
+    depends_on:
+    - cart
+    - user
+    - rabbitmq
+  frontend:
+    image: frontend:v1
+    container_name: frontend
+    ports:
+    - "80:80"
+    depends_on:
+    - catalogue
+    - user
+    - cart
+    - shipping
+    - payment
+    
 networks:
   default:
     driver: bridge
