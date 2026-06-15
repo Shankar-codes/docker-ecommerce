@@ -7,7 +7,21 @@ services:
     container_name: catalogue
     depends_on: 
     - mongodb
-  
+  redis:
+    image: redis:v1
+    container_name: redis
+  mysql:
+    image: mysql:v1
+    container_name: mysql
+  rabbitmq:
+    image: rabbitmq:v1
+    container_name: rabbitmq
+  user:
+    image: user:v1
+    container_name: user
+    depends_on:
+    - redis
+    - mongodb
 networks:
   default:
     driver: bridge
