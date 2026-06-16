@@ -11,6 +11,7 @@ RUN pip3 install --prefix=/install -r requirements.txt
 FROM python:3.9.25-alpine3.21
 EXPOSE 8080
 WORKDIR /opt/server
+RUN apk add --no-cache pcre
 RUN addgroup -S roboshop && adduser -S roboshop -G roboshop
 COPY --from=builder /install /usr/local
 COPY --chown=roboshop:roboshop payment.ini *.py requirements.txt .
@@ -24,8 +25,6 @@ ENV CART_HOST="cart" \
 
 USER roboshop
 CMD ["uwsgi", "--ini", "payment.ini"]
-
-
 
 # # FROM python:3.9
 # EXPOSE 8080
