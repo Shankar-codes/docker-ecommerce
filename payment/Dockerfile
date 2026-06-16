@@ -12,7 +12,6 @@ FROM python:3.9.25-alpine3.21
 EXPOSE 8080
 WORKDIR /opt/server
 RUN addgroup -S roboshop && adduser -S roboshop -G roboshop
-RUN chown -R roboshop:roboshop /opt/server
 COPY --from=builder /install /usr/local/bin
 COPY --chown=roboshop:roboshop payment.ini *.py requirements.txt .
 ENV CART_HOST="cart" \
