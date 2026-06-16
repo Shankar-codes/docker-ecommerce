@@ -12,7 +12,7 @@ FROM python:3.9.25-alpine3.21
 EXPOSE 8080
 WORKDIR /opt/server
 RUN addgroup -S roboshop && adduser -S roboshop -G roboshop
-COPY --from=builder /install /usr/local/bin
+COPY --from=builder /install /usr/local
 COPY --chown=roboshop:roboshop payment.ini *.py requirements.txt .
 ENV CART_HOST="cart" \
     CART_PORT="8080" \
