@@ -5,7 +5,7 @@ RUN apk add --no-cache \
     linux-headers \
     pcre-dev
 COPY requirements.txt .
-RUN pip install -r --prefix =/install requirements.txt
+RUN pip install -r --prefix=/install requirements.txt
 
 
 FROM python:3.9.25-alpine3.21
