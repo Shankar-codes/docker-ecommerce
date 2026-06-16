@@ -8,6 +8,7 @@ FROM python:3.9.25-alpine3.21
 EXPOSE 8080
 WORKDIR /opt/server
 RUN addgroup -S roboshop && adduser -S roboshop -G roboshop
+RUN apk add --no-cache pcre
 ENV CART_HOST="cart" \
     CART_PORT="8080" \
     USER_HOST="user" \
